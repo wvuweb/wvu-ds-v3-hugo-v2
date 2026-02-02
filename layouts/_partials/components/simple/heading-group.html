@@ -1,0 +1,46 @@
+{{ $superHeading := "" }}
+{{ $superHeadingConfig := "" }}
+
+{{ $heading := "" }}
+{{ $headingHierarchy := "" }}
+{{ $headingId := "" }}
+{{ $headingClasses := "" }}
+
+{{ $subheading := "" }}
+{{ $subheadingClasses := "" }}
+
+{{ if .elements }}
+  {{ if .elements.super_heading }}
+    {{ $superHeading = .elements.superHeading }}
+  {{ end }}
+  {{ if .elements.heading }}
+    {{ $heading = .elements.heading }}
+  {{ end }}
+  {{ if .elements.subheading }}
+    {{ $subheading = .elements.subheading }}
+  {{ end }}
+{{ end }}
+
+{{ if .config }}
+  {{ if .config.super_heading }}
+    {{ $superHeadingConfig = .config.super_heading }}
+  {{ end }}
+  {{ if .config.heading }}
+    {{ $headingClasses = partial "utilities/utility-classes.html" .config.heading }}
+  {{ end }}
+  {{ if and .config .config.subheading }}
+    {{ $subheadingClasses = partial "utilities/utility-classes.html" .config.subheading }}
+  {{ end }}
+{{ end }}
+
+{{ if .elements.superHeading }}
+  {{ partial "components/simple/super-heading.html" ( dict "superHeading" $superHeading "config" $superHeadingConfig )}}
+{{ end }}
+
+{{ if .elements.heading }}
+  {{ partial "components/simple/heading.html" ( dict "id" $headingId "hierarchy" $headingHierarchy "text" $heading "classes" $headingClasses ) }}
+{{ end }}
+
+{{ if .elements.subheading }}
+  {{ partial "components/simple/subheading.html" ( dict "text" $subheading "classes" $subheadingClasses ) }}
+{{ end }}

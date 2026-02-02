@@ -1,0 +1,27 @@
+section:
+  padding_y: py-6
+components:
+  button:
+    color: btn-primary
+  hero:
+    layout: standard
+    align: justify-content-start
+    background_image:
+      disable: false
+    section:
+      classes: null
+      position: position-relative
+      display: d-flex
+      flex_direction: flex-column
+      flex_align: align-items-center
+      height: null
+      width: w-100
+      background_color: bg-dark
+      color: text-white
+    heading:
+      font: wvu-shout
+      size: display-1
+      color: text-wvu-blue
+      decoration: wvu-bar
+    copy:
+      width: col-xl-5 col-lg-6 col-md-12

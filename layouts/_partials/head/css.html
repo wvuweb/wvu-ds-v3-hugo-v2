@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="https://use.typekit.net/yys7vri.css">
+
+{{ $scss := resources.Get "scss/site.scss" }}
+{{ $styles := $scss | toCSS | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+
+{{ with site.Data.settings.settings.extras.custom_css }}
+<style>
+{{ . | safeCSS }}
+</style>
+{{ end }}

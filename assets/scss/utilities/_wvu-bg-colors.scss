@@ -1,0 +1,31 @@
+@each $key, $value in $dark-theme-colors {
+  .bg-#{$key} {
+    color: white;
+  }
+  .bg-#{$key}-subtle {
+    background-color: shade($value, 15%) !important;
+    color: white;
+  }
+}
+
+// @each $key, $value in ($dark-theme-colors, $dark-theme-accents) {
+//   .bg-#{$key}, .bg-#{$key} {
+//     .wvu-b-accent {
+      
+//     }
+//   }
+// }
+
+@each $key, $value in $light-theme-colors {
+  .bg-#{$key} {
+    color: $dark;
+  }
+  .bg-#{$key}-subtle {
+    background-color: tint($value, 50%) !important;
+    color: $dark;
+  }
+}
+
+.bg-inherit {
+  background-color: inherit $global-important;
+}

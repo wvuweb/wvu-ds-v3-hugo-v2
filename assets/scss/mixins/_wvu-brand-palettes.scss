@@ -1,0 +1,329 @@
+$wvu-b-bg-color: null;
+$wvu-b-breadcrumbs-bg-color: null;
+$wvu-b-breadcrumbs-text-color: null;
+
+@mixin wvu-elements-typography($elements, $typography-palettes) {
+  @each $tone, $properties in $elements {
+    .tone-#{$tone}, &.tone-#{$tone} {
+      @each $property, $value in $properties {
+        .wvu-b-#{$property} {
+          @if $property == "border" {
+            border: $value $global-important;
+            .wvu-b-border {
+              border: none !important;
+            }
+          } @else if $property == "shadow" and $value == true {
+            @include wvu-shadow-hard-filter();
+            .wvu-b-shadow {
+              filter: none !important;
+            }
+          } @else if $property == "pattern" and $value != "" {
+            @include wvu-bg-pattern($value);
+            .wvu-b-pattern {
+              @include wvu-bg-pattern('null');
+            }
+          }
+        }
+      }
+    }
+  }
+  @each $tone, $typography-palette in $typography-palettes {
+    .tone-#{$tone}, &.tone-#{$tone} {
+      @each $element, $typeface in $typography-palette {
+        @if $element == "display-heading-case" and $typeface == uppercase {
+          .wvu-b-display-heading {
+            text-transform: uppercase $global-important;
+          }
+        } @else if $element == "display-heading-shadow" and $typeface == true {
+          .wvu-b-text-shadow {
+            filter: drop-shadow(-10px 10px rgba(50, 50, 0, 0.15));
+          }
+        // } @else if $element == "display-heading-letter-spacing" {
+        //   .wvu-b-display-heading {
+        //     letter-spacing: $typeface $global-important;
+        //   }
+        // } @else if $element == "subheading-letter-spacing" {
+        //   .wvu-b-subheading {
+        //     letter-spacing: $typeface $global-important;
+        //   }
+        } @else if $element == "display-heading" or $element == "subheading" {
+          .wvu-b-#{$element} {
+            @if $typeface == "shout" {
+              @include wvu-shout();
+              .wvu-b-font-adjust {
+                @include shout-display-adjust();
+              }
+            } @else if $typeface == "config-regular" {
+              @include config-regular();
+              .wvu-b-font-adjust {
+                @include config-display-adjust();
+              }
+            } @else if $typeface == "config-bold" {
+              @include config-bold();
+              .wvu-b-font-adjust {
+                @include config-display-adjust();
+              }
+            } @else if $typeface == "config-condensed-regular" {
+              @include config-condensed-regular();
+              .wvu-b-font-adjust {
+                @include config-display-adjust();
+              }
+            } @else if $typeface == "config-condensed-regular-italic" {
+              @include config-condensed-regular-italic();
+              .wvu-b-font-adjust {
+                @include config-display-adjust();
+              }
+            } @else if $typeface == "config-condensed-black" {
+              @include config-condensed-black();
+              .wvu-b-font-adjust {
+                @include config-display-adjust();
+              }
+            } @else if $typeface == "config-light" {
+              @include config-light();
+              .wvu-b-font-adjust {
+                @include config-display-adjust();
+              }
+            } @else if $typeface == "config-light-italic" {
+              @include config-light-italic();
+              .wvu-b-font-adjust {
+                @include config-display-adjust();
+              }
+            } @else if $typeface == "config-extra-bold" {
+              @include config-extra-bold();
+              .wvu-b-font-adjust {
+                @include config-display-adjust();
+              }
+            } @else if $typeface == "config-extra-bold-italic" {
+              @include config-extra-bold-italic();
+              .wvu-b-font-adjust {
+                @include config-display-adjust();
+              }
+            } @else if $typeface == "antonia-regular" {
+              @include antonia-regular();
+              .wvu-b-font-adjust {
+                @include antonia-display-adjust();
+              }
+            } @else if $typeface == "antonia-light" {
+              @include antonia-light();
+              .wvu-b-font-adjust {
+                @include antonia-display-adjust();
+              }
+            } @else if $typeface == "antonia-bold" {
+              @include antonia-bold();
+              .wvu-b-font-adjust {
+                @include antonia-display-adjust();
+              }
+            } @else if $typeface == "antonia-italic" {
+              @include antonia-italic();
+              .wvu-b-font-adjust {
+                @include antonia-display-adjust();
+              }
+            } @else if $typeface == "antonia-bold-italic" {
+              @include antonia-bold-italic();
+              .wvu-b-font-adjust {
+                @include antonia-display-adjust();
+              }
+            } @else if $typeface == "antonia-heavy" {
+              @include antonia-heavy();
+              .wvu-b-font-adjust {
+                @include antonia-display-adjust();
+              }
+            } @else if $typeface == "antonia-heavy-italic" {
+              @include antonia-heavy-italic();
+              .wvu-b-font-adjust {
+                @include antonia-display-adjust();
+              }
+            } @else if $typeface == "antonia-black" {
+              @include antonia-black();
+              .wvu-b-font-adjust {
+                @include antonia-display-adjust();
+              }
+            } @else if $typeface == "antonia-black-italic" {
+              @include antonia-black-italic();
+              .wvu-b-font-adjust {
+                @include antonia-display-adjust();
+              }
+            } @else {
+              font-family: $typeface $global-important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin wvu-color-palette($color-palette) {
+  @each $element, $color in $color-palette {
+    @if $element == "background" {
+      background-color: $color $global-important;
+      $wvu-b-bg-color: $color !global;
+      $wvu-b-breadcrumbs-bg-color: $color !global;
+      @if $color == $wvu-canary or $color == $wvu-sunset or $color == $wvu-coopers-gray or $color == $wvu-seneca-gray or $color == $wvu-wild-flour or $color == $wvu-buckskin {
+        &.wvu-b-subtle, .wvu-b-subtle {
+          background-color: tint($wvu-b-bg-color, 20%) !important;
+          .wvu-b-subtle {
+            background-color: $wvu-b-bg-color $global-important;
+            &.btn {
+              color: white !important;
+            }
+          }
+        }
+      } @else if $color == $wvu-star-city-blue {
+        &.wvu-b-subtle, .wvu-b-subtle {
+          background-color: tint($wvu-b-bg-color, 10%) !important;
+          .wvu-b-subtle {
+            background-color: $wvu-b-bg-color $global-important;
+            &.btn {
+              color: white !important;
+            }
+          }
+        }
+      } @else if $color == $wvu-gold {
+        &.wvu-b-subtle, .wvu-b-subtle {
+          background-color: tint($wvu-b-bg-color, 7%) !important;
+          .wvu-b-subtle {
+            background-color: $wvu-b-bg-color $global-important;
+            &.btn {
+              color: white !important;
+            }
+          }
+        }
+      } @else if $color == $wvu-coal {
+        &.wvu-b-subtle, .wvu-b-subtle {
+          background-color: shade($wvu-b-bg-color, 20%) !important;
+          .wvu-b-subtle {
+            background-color: $wvu-b-bg-color $global-important;
+            &.btn {
+              color: white !important;
+            }
+          }
+        }
+      } @else if $color == $wvu-blue {
+        &.wvu-b-subtle, .wvu-b-subtle {
+          background-color: shade($wvu-b-bg-color, 20%) !important;
+          .wvu-b-subtle {
+            background-color: $wvu-b-bg-color $global-important;
+            &.btn {
+              color: white !important;
+            }
+          }
+        }
+      } @else if $color == $wvu-not-quite-white {
+        &.wvu-b-subtle, .wvu-b-subtle {
+          background-color: tint($wvu-b-bg-color, 50%) !important;
+          .wvu-b-subtle {
+            background-color: $wvu-b-bg-color $global-important;
+            &.btn {
+              color: $wvu-coal !important;
+            }
+          }
+        }
+      } @else {
+        &.wvu-b-subtle, .wvu-b-subtle {
+          background-color: shade($wvu-b-bg-color, 7%) !important;
+          .wvu-b-subtle {
+            background-color: $wvu-b-bg-color $global-important;
+            &.btn {
+              color: $wvu-coal !important;
+            }
+          }
+        }
+      }
+    } @else if $element == "accent-bg" or $element == "pattern" {
+      .wvu-b-#{$element} {
+        background-color: $color $global-important;
+      }
+      @if $element == "accent-bg" {
+        .wvu-b-accent-bg {
+          color: $wvu-b-bg-color $global-important;
+        }
+        .wvu-b-btn {
+          @include button-variant($background: $color, $border: $color);
+        }
+      }
+    } @else if $element == "text" {
+      color: $color $global-important;
+      &.wvu-b-subtle, .wvu-b-subtle {
+        color: $color $global-important;
+        .wvu-b-subtle {
+          color: $color $global-important;
+        }
+      }
+      $wvu-b-breadcrumbs-text-color: $color !global;
+      .wvu-b-text, .wvu-b-text a:link, .wvu-b-text a:visited {
+        :not(.btn), &:not(.btn >) {
+          color: $color $global-important;
+        }
+      }
+    } @else if $element == "gradient" and $color != "" {
+      &.wvu-b-gradient, .wvu-b-gradient {
+        @include wvu-gradient($color);
+      }
+    } @else if $element == "pattern-color" and $color != "" {
+      &.wvu-b-pattern-color, .wvu-b-pattern-color {
+        background-color: $color $global-important;
+      }
+    } @else if $element == "gradient-accent" {
+      .wvu-b-gradient-accent {
+        background: $color $global-important;
+      }
+      &.wvu-b-pattern-color, .wvu-b-pattern-color {
+        opacity: 1 $global-important;
+      }
+    } @else if $element == "breadcrumbs-bg" and $color != "" {
+      $wvu-b-breadcrumbs-bg-color: $color !global;
+    } @else if $element == "breadcrumbs-text" and $color != "" {
+      $wvu-b-breadcrumbs-text-color: $color !global;
+    } @else {
+      .wvu-b-#{$element} {
+        color: $color $global-important;
+      }
+    }
+    .wvu-b-breadcrumbs {
+      background-color: $wvu-b-breadcrumbs-bg-color $global-important;
+      color: $wvu-b-breadcrumbs-text-color $global-important;
+      a:link, a:visited {
+        color: $wvu-b-breadcrumbs-text-color $global-important;
+      }
+    }
+  }
+}
+
+@mixin wvu-color-palettes($color-palettes) {
+  @each $tone, $color-palette in $color-palettes {
+    .tone-#{$tone}, &.tone-#{$tone} {
+      @each $option, $colors in $color-palette {
+        .bg-option-#{$option}, &.bg-option-#{$option} {
+          @include wvu-color-palette($colors);
+          .is-loud {
+            .wvu-b-border, .wvu-b-shadow {
+              &:not(.wvu-b-accent-bg) {
+                background-color: $wvu-not-quite-white $global-important;
+                color: $wvu-blue $global-important;
+              }
+              .wvu-b-subtle, &.wvu-b-subtle {
+                background-color: tint($wvu-not-quite-white, 50%) !important;
+                .wvu-b-subtle {
+                  background-color: $wvu-b-bg-color $global-important;
+                }
+              }
+              .wvu-b-accent-text {
+                color: $wvu-blue $global-important;
+              }
+              .wvu-b-btn {
+                &:not(.btn) {
+                  color: inherit $global-important;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// .wvu-b-btn {
+//   @include button-variant($background: $wvu-canary, $border: $wvu-canary);
+// }

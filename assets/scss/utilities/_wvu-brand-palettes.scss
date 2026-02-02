@@ -1,0 +1,355 @@
+.wvu-b-label {
+  @include config-condensed-bold();
+  letter-spacing: $wvu-letter-spacing-width-lg $global-important;
+  text-transform: uppercase $global-important;
+}
+
+// .wvu-b-pattern, .wvu-b-gradient {
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   top: 0;
+// }
+
+$border: 3px solid $dark;
+
+$wvu-brand-audiences: (
+  "general",
+  "prospective_students",
+  "alumni",
+  "leaders_partners"
+);
+
+$wvu-brand-tones: (
+  "default",
+  "formal",
+  "fun",
+  "lets-go"
+);
+
+// $wvu-elements-kitchen-sink: (
+//   "display-heading-shadow": true,
+//   "display-heading-outline": true,
+//   "pattern": topo-light
+// );
+
+// @mixin wvu-brand-elements($elements) {
+//   @each $element, $value in $elements {
+//     @if $element == "display-heading-shadow" and $value == true {
+//       .wvu-b-text-shadow {
+//         @include wvu-shadow-hard-filter();
+//       }
+//     }
+//   }
+// }
+
+// Elements
+
+$wvu-elements-default: (
+  "border": "",
+  "shadow": "",
+  "text-shadow": "",
+  "pattern": ""
+);
+
+$wvu-elements-reserved: (
+  "border": "",
+  "shadow": "",
+  "text-shadow": true,
+  "pattern": ""
+);
+
+$wvu-elements-loud: (
+  "border": $border,
+  "shadow": true,
+  "text-shadow": "",
+  "pattern": ""
+);
+
+$wvu-elements-lets-go: (
+  "border": $border,
+  "shadow": true,
+  "text-shadow": true,
+  "pattern": topo-light
+);
+
+$wvu-elements-prospective-students-default: (
+  "border": "",
+  "shadow": "",
+  "text-shadow": "",
+  "pattern": ""
+);
+
+$wvu-elements-prospective-students-reserved: (
+  "border": "",
+  "shadow": "",
+  "text-shadow": "",
+  "pattern": ""
+);
+
+$wvu-elements-prospective-students-loud: (
+  "border": $border,
+  "shadow": true,
+  "text-shadow": "",
+  "pattern": ""
+);
+
+$wvu-elements-prospective-students-lets-go: (
+  "border": $border,
+  "shadow": true,
+  "text-shadow": true,
+  "pattern": distressed-lines
+);
+
+$wvu-elements-general: (
+  "default": $wvu-elements-default,
+  "reserved": $wvu-elements-reserved,
+  "loud": $wvu-elements-loud,
+  "lets-go": $wvu-elements-lets-go
+);
+
+$wvu-elements-prospective-students: (
+  "default": $wvu-elements-prospective-students-default,
+  "reserved": $wvu-elements-prospective-students-reserved,
+  "loud": $wvu-elements-prospective-students-loud,
+  "lets-go": $wvu-elements-prospective-students-lets-go
+);
+
+$wvu-elements-alumni: (
+  "default": $wvu-elements-default,
+  "reserved": $wvu-elements-reserved,
+  "loud": $wvu-elements-loud,
+  "lets-go": $wvu-elements-lets-go
+);
+
+$wvu-elements-leaders-partners: (
+  "default": $wvu-elements-default,
+  "reserved": $wvu-elements-reserved,
+  "loud": $wvu-elements-loud,
+  "lets-go": $wvu-elements-lets-go
+);
+
+// Typography Palettes
+
+// Antonia
+
+$wvu-typography-palette-antonia: (
+  "display-heading": "antonia-bold",
+  "subheading": "antonia-regular",
+  "text": $helvetica-neue
+);
+
+$wvu-typography-palette-antonia-reserved: (
+  "display-heading": "antonia-light",
+  "subheading": "antonia-regular",
+  "text": $antonia
+);
+
+$wvu-typography-palette-antonia-loud: (
+  "display-heading": "antonia-heavy",
+  "display-heading-case": none,
+  "subheading": "antonia-regular",
+  "text": "antonia"
+);
+
+$wvu-typography-palette-antonia-lets-go: (
+  "display-heading": "antonia-heavy-italic",
+  "display-heading-case": uppercase,
+  "subheading": "antonia-regular",
+  "text": $helvetica-neue
+);
+
+// Helvetica
+
+$wvu-typography-palette-helvetica: (
+  "display-heading": "shout",
+  "subheading": $helvetica-neue-bold,
+  "text": $helvetica-neue
+);
+
+$wvu-typography-palette-helvetica-reserved: (
+  "display-heading": "shout",
+  "subheading": "antonia-bold",
+  "text": $helvetica-neue
+);
+
+$wvu-typography-palette-helvetica-loud: (
+  "display-heading": "shout",
+  "subheading": $helvetica-neue-light,
+  "text": $helvetica-neue
+);
+
+$wvu-typography-palette-helvetica-lets-go: (
+  "display-heading": "shout",
+  "subheading": $helvetica-neue-light,
+  "text": $helvetica-neue
+);
+
+// Config
+
+$wvu-typography-palette-config: (
+  "display-heading": "config-extra-bold-italic",
+  "subheading": "antonia-regular",
+  "text": "config"
+);
+
+$wvu-typography-palette-config-reserved: (
+  "display-heading": "config-light",
+  "subheading": "antonia-regular",
+  "text": "config"
+);
+
+$wvu-typography-palette-config-loud: (
+  "display-heading": "config-extra-bold-italic",
+  "display-heading-case": uppercase,
+  "subheading": "config-condensed-regular-italic",
+  "subheading-letter-spacing": .05em,
+  "text": "config"
+);
+
+$wvu-typography-palette-config-lets-go: (
+  "display-heading": "config-extra-bold-italic",
+  "display-heading-case": uppercase,
+  "display-heading-shadow": true,
+  "subheading": "config-condensed-regular-italic",
+  "subheading-letter-spacing": .05em,
+  "text": "config"
+);
+
+// By Audience and Tone
+
+$wvu-typography-palette-general-default: (
+  "display-heading": "config-bold",
+  "display-heading-case": normal,
+  "subheading": "config-light",
+  "text": $helvetica-neue
+);
+
+$wvu-typography-palette-general-reserved: (
+  "display-heading": "antonia-regular",
+  "display-heading-case": normal,
+  "subheading": "config-light",
+  "text": $helvetica-neue
+);
+
+$wvu-typography-palette-general-loud: (
+  "display-heading": "config-condensed-black",
+  "display-heading-case": uppercase,
+  "subheading": "config-light",
+  "text": $helvetica-neue
+);
+
+$wvu-typography-palette-general-lets-go: (
+  "display-heading": "config-condensed-black",
+  "display-heading-case": uppercase,
+  "subheading": "config-light",
+  "text": $helvetica-neue
+);
+
+// Alumni
+
+$wvu-typography-palette-alumni-reserved: (
+  "display-heading": "antonia-light",
+  "display-heading-case": normal,
+  "subheading": "antonia-light",
+  // "subheading-letter-spacing": .1em,
+  "text": $helvetica-neue
+);
+
+$wvu-typography-palette-alumni-loud: (
+  "display-heading": "antonia-heavy-italic",
+  "display-heading-case": uppercase,
+  "display-heading-letter-spacing": .1em,
+  "subheading": "antonia-light",
+  "text": $helvetica-neue
+);
+
+$wvu-typography-palette-alumni-lets-go: (
+  "display-heading": "antonia-heavy-italic",
+  "display-heading-case": uppercase,
+  "display-heading-letter-spacing": .1em,
+  "subheading": "antonia-regular",
+  "text": $helvetica-neue
+);
+
+// State Leaders and Partners
+
+$wvu-typography-palette-leaders-partners-default: (
+  "display-heading": "antonia-regular",
+  "display-heading-case": normal,
+  "display-heading-letter-spacing": .05em,
+  "subheading": "config-light",
+  "text": $helvetica-neue
+);
+
+$wvu-typography-palette-leaders-partners-reserved: (
+  "display-heading": "antonia-italic",
+  "display-heading-case": normal,
+  "display-heading-letter-spacing": .1em,
+  "subheading": "config-light",
+  "text": $helvetica-neue
+);
+
+$wvu-typography-palette-leaders-partners-loud: (
+  "display-heading": "antonia-heavy",
+  "display-heading-case": uppercase,
+  "display-heading-letter-spacing": .1em,
+  "subheading": "config-light",
+  "text": $helvetica-neue
+);
+
+$wvu-typography-palette-leaders-partners-lets-go: (
+  "display-heading": "antonia-heavy",
+  "display-heading-case": uppercase,
+  "display-heading-letter-spacing": .1em,
+  "subheading": "config-light",
+  "text": $helvetica-neue
+);
+
+// Palettes
+
+$wvu-typography-palettes-prospective-students: (
+  "default": $wvu-typography-palette-config,
+  "reserved": $wvu-typography-palette-config-reserved,
+  "loud": $wvu-typography-palette-config-loud,
+  "lets-go": $wvu-typography-palette-config-lets-go
+);
+
+$wvu-typography-palettes-alumni: (
+  "default": $wvu-typography-palette-antonia,
+  "reserved": $wvu-typography-palette-alumni-reserved,
+  "loud": $wvu-typography-palette-alumni-loud,
+  "lets-go": $wvu-typography-palette-alumni-lets-go
+);
+
+$wvu-typography-palettes-general: (
+  "default": $wvu-typography-palette-general-default,
+  "reserved": $wvu-typography-palette-general-reserved,
+  "loud": $wvu-typography-palette-general-loud,
+  "lets-go": $wvu-typography-palette-general-lets-go
+);
+
+$wvu-typography-palettes-leaders-partners: (
+  "default": $wvu-typography-palette-leaders-partners-default,
+  "reserved": $wvu-typography-palette-leaders-partners-reserved,
+  "loud": $wvu-typography-palette-leaders-partners-loud,
+  "lets-go": $wvu-typography-palette-leaders-partners-lets-go
+);
+
+@each $audience in $wvu-brand-audiences {
+  .audience-#{$audience} {
+    @if $audience == "prospective_students" {
+      @include wvu-elements-typography($wvu-elements-prospective-students, $wvu-typography-palettes-prospective-students);
+      @include wvu-color-palettes($color-palettes-prospective-students);
+    } @else if $audience == "alumni" {
+      @include wvu-elements-typography($wvu-elements-alumni, $wvu-typography-palettes-alumni);
+      @include wvu-color-palettes($color-palettes-alumni);
+    } @else if $audience == "leaders_partners" {
+      @include wvu-elements-typography($wvu-elements-general, $wvu-typography-palettes-leaders-partners);
+      @include wvu-color-palettes($color-palettes-leaders-partners);
+    } @else {
+      @include wvu-elements-typography($wvu-elements-general, $wvu-typography-palettes-general);
+      @include wvu-color-palettes($color-palettes-general);
+    }
+  }
+}

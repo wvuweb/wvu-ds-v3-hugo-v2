@@ -1,0 +1,12 @@
+{{ $text := "" }}
+{{ $classes := slice }}
+
+{{ if .text }}
+  {{ $text = .text }}
+{{ end }}
+
+{{ if .classes }}
+  {{ $classes = .classes }}
+{{ end }}
+
+<p class="{{ range $classes }}{{ . }} {{ end }}">{{ $text }}</p>

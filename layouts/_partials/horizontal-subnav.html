@@ -1,0 +1,42 @@
+{{ $title := "" }}
+{{ $menu := .menu_id }}
+{{ $sectionUrl := "" }}
+{{ $backgroundColor := "" }}
+{{ $labelColor := "" }}
+{{ $items := slice }}
+
+{{ range $index, $value := site.Data.menus }}
+  {{ if eq $index $menu }}
+    {{ $title = .title }}
+    {{ $sectionUrl = .section_url }}
+    {{ $items = .menu_items }}
+    {{ if .background_c }}
+      {{ $backgroundColor = .background_c }}
+    {{ end }}
+    {{ if .label_c }}
+      {{ $labelColor = .label_c }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ if .menu_id }}
+  <section class="bg-{{ $backgroundColor }}">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand config-extra-bold text-uppercase text-decoration-none text-{{ $labelColor }}" href="{{ $sectionUrl }}">{{ $title }}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 antonia-heavy small">
+            {{ range $items }}
+              <li class="nav-item">
+                <a class="nav-link" href="{{ .url }}">{{ .text }}</a>
+              </li>
+            {{ end }}
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </section>
+{{ end }}

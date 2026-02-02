@@ -1,0 +1,7 @@
+@mixin wvu-gradient($colors) {
+  background-color: map-get($colors, "background");
+  background-image:
+    linear-gradient(20deg, map-get($colors, "color-ll"), transparent),
+    linear-gradient(194deg, map-get($colors, "color-ur"), transparent),
+    linear-gradient(294deg, map-get($colors, "color-lr"), transparent);  
+}

@@ -1,0 +1,10 @@
+body {
+  counter-reset: is_count;
+}
+
+.is-count {
+  &::after {
+    counter-increment: is_count;
+    content: counter(is_count);
+  }
+}

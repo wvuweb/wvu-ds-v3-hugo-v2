@@ -1,0 +1,34 @@
+{{ $icon := "" }}
+{{ $label := "" }}
+{{ $text := "" }}
+{{ $classes := "" }}
+{{ $labelClasses := slice }}
+
+{{ if .superHeading }}
+  {{ if .superHeading.label }}
+    {{ $label = .superHeading.label }}
+  {{ end }}
+  {{ if .superHeading.text }}
+    {{ $text = .superHeading.text }}
+  {{ end }}
+{{ end }}
+
+{{ if .config }}
+  {{ if .config.label }}
+    {{ $labelClasses = partial "utilities/utility-classes.html" .config.label }}
+  {{ end }}
+{{ end }}
+
+<p class="{{ $classes }}">
+  {{ if .superHeading.icon }}
+    <span class="d-inline-flex align-items-center">
+      <span class="fa-regular fa-{{ .superHeading.icon }}"></span>
+    </span>
+  {{ end }}
+  {{ if .superHeading.label }}
+    <span class="{{ range $labelClasses }}{{ . }} {{ end }}">
+      {{ $label }}
+    </span>
+  {{ end }}
+  {{ $text }}
+</p>

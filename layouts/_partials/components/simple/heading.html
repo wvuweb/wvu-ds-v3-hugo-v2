@@ -1,0 +1,26 @@
+{{ $hierarchy := 2 }}
+{{ $id := "" }}
+{{ $text := "" }}
+{{ $classes := slice }}
+
+{{ if .id }}
+  {{ $id = .id }}
+{{ end }}
+
+{{ if .text }}
+  {{ $text = .text }}
+{{ end }}
+
+{{ if .classes }}
+  {{ $classes = .classes }}
+{{ end }}
+
+{{ if .hierarchy }}
+  {{ $hierarchy = .hierarchy }}
+{{ end }}
+
+{{ if eq $hierarchy 1 }}
+  <h1 id="{{ $id }}" class="{{ range $classes }}{{ . }} {{ end }}">{{ .text }}</h1>
+{{ else }}
+  <h2 id="{{ $id }}" class="{{ range $classes }}{{ . }} {{ end }}">{{ .text }}</h2>
+{{ end }}

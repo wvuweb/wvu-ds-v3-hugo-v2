@@ -1,0 +1,21 @@
+{{ $classes := "" }}
+{{ $backgroundColor := "" }}
+{{ $color := "" }}
+
+{{ if .classes }}
+  {{ $classes = .classes }}
+{{ end }}
+{{ if .background_color }}
+  {{ $backgroundColor = .background_color }}
+{{ end }}
+{{ if .color }}
+  {{ $color = .color }}
+{{ end }}
+
+{{ $sectionClasses := slice
+  $classes
+  $backgroundColor
+  $color
+}}
+
+{{ return $sectionClasses }}
