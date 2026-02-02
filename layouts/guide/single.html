@@ -1,5 +1,7 @@
 {{ define "main" }}
 
+  <editable-component data-prop="content_blocks" data-component="page-guide">
+
   {{ $blocks := slice }}
   {{ $block := "" }}
   {{ $sitewideComponents := slice }}
@@ -31,5 +33,7 @@
       </div>
     </div>
   {{ end }}
+
+  </editable-component>
   
 {{ end }}
